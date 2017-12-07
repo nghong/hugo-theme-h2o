@@ -1,0 +1,67 @@
+{{ define "main" }}
+    {{ partialCached "header.html" . }}
+
+<div class="g-banner home-banner banner-theme-default" data-theme="default">
+    <h2>{{ .Site.Title }}</h2>
+    <h3>{{ .Site.Params.subtitle }}</h3>
+</div>
+
+<main class="g-container home-content">
+    <div class="article-list">
+        {{ $paginator := .Paginate (where .Data.Pages "Type" "post") (index .Site.Params "paginate" | default 10) }}
+        {{ range $paginator.Pages -}}
+            <article class="article-item">
+                {{ if isset .Params "cover" }}
+                <div class="post-cover">
+                    <a class="post-link" href="{{ .Permalink }}" title="{{ .Title }}"></a>
+                    <img src="{{ .Params.cover }}" alt="{{ .Title }}">
+                </div>
+                {{ end }}
+                <section class="post-preview">
+                    <a class="post-link" href="{{ .Permalink }}" title="{{ .Title }}"></a>
+                    <h2 class="post-title">{{ .Title }}</h2>
+                    <p class="post-excerpt">{{ .Summary | plainify | htmlUnescape }}</p>
+                </section>
+                <footer class="post-meta">
+                {{ if isset .Params "tags" -}}
+                    {{ $tagsLen := len .Params.tags }}
+                    {{ if gt $tagsLen 0 -}}
+                    <div class="post-tags">
+                        {{ range $tag := (sort .Params.tags) -}}
+                        <a href="{{ "/tags/" | absURL }}/{{ . | urlize | lower }}" class="post-tag">{{ . }}</a>
+                        {{ end }}
+                    </div>
+                    {{ end }}
+                {{ end }}
+                    <div class="post-info">
+                        {{ partial "post-meta.html" (dict "date" .Date "reading_time" .ReadingTime) }}
+                    </div>
+                </footer>
+            </article>
+        {{ end }}
+
+        {{ if or (.Paginator.HasPrev) (.Paginator.HasNext) -}}
+            {{ partial "page-nav.html" . }}
+        {{ end }}
+
+    </div>
+
+    <aside class="g-sidebar-wrapper">
+        <div class="g-sidebar">
+            <section class="author-card">
+                {{ partialCached "author.html" . }}
+            </section>
+        </div>
+
+        {{ with .Site.Params.siteSearch }}
+        <div class="search-card">
+            <input id="search_input" type="text" placeholder="Search...">
+            <i class="iconfont icon-search"></i>
+            <div class="search_result"></div>
+        </div>
+        {{ end }}
+
+    </aside>
+
+</main>
+{{ end }}

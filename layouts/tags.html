@@ -1,0 +1,29 @@
+---
+title = "Tags"
+---
+
+{{ define "main" }}
+
+{{ partialCached "header.html" . }}
+
+<div class="g-banner tags-banner bgcolor-default" data-theme="default">
+    <h2>TAGS</h2>
+</div>
+
+<main class="tags-content">
+
+    <ul class="tags-list">
+        {{ range $key, $value := .Site.Taxonomies.tags }}
+        <li>
+            <span class="tag-name" id="{{ $value }}">「{{ $key }}」</span>
+            {{ range $value.Pages }}
+            <a class="tag-post" href="{{ .Permalink}}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
+            {{ end }}
+        </li>
+        {{ end }}
+    </ul>
+</main>
+    
+{{ partialCached "footer.html" . }}
+
+{{ end }}

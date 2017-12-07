@@ -1,0 +1,116 @@
+@font-face {
+    font-family: "iconfont";
+    src:
+    url("../fonts/iconfont.eot") format("embedded-opentype"),
+    url("../fonts/iconfont.woff") format("woff"), 
+    url("../fonts/iconfont.ttf") format("truetype")
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size:14px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.social-share {
+    font-family: "iconfont" !important;
+    font-size: 12px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.social-share * {
+    font-family: "iconfont" !important
+}
+
+.icon-twitter:before { content: "\f099"; }
+
+.icon-facebook:before { content: "\f09a"; }
+
+.icon-author:before { content: "\f2be"; }
+
+.icon-search:before { content: "\f002"; }
+
+.icon-email:before { content: "\f003"; }
+
+.icon-linkedin:before { content: "\f0e1"; }
+
+.icon-date:before { content: "\f073"; }
+
+.icon-github:before { content: "\f09b"; }
+
+.icon-google:before { content: "\f0d5"; }
+
+.icon-menu:before { content: "\f0c9"; }
+
+.icon-like:before { content: "\f087"; }
+
+.icon-time:before { content: "\f017"; }
+
+.social-share a {
+    position: relative;
+    text-decoration: none;
+    margin: 4px;
+    display: inline-block;
+    outline: none
+}
+
+.social-share .social-share-icon {
+    position: relative;
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    border-radius: 50%;
+    line-height: 32px;
+    border: 1px solid #666;
+    color: #666;
+    text-align: center;
+    vertical-align: middle;
+    transition: background 0.6s ease-out 0s
+}
+
+.social-share .social-share-icon:hover {
+    background: #666;
+    color: #fff
+}
+
+.social-share .icon-linkedin {
+    color: #0077B5;
+    border-color: #0077B5
+}
+
+.social-share .icon-linkedin:hover {
+    background: #0077B5
+}
+
+.social-share .icon-facebook {
+    color: #44619D;
+    border-color: #44619D
+}
+
+.social-share .icon-facebook:hover {
+    background: #44619D
+}
+
+.social-share .icon-google {
+    color: #db4437;
+    border-color: #db4437
+}
+
+.social-share .icon-google:hover {
+    background: #db4437
+}
+
+.social-share .icon-twitter {
+    color: #55acee;
+    border-color: #55acee
+}
+
+.social-share .icon-twitter:hover {
+    background: #55acee
+}

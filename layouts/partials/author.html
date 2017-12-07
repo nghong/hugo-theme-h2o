@@ -1,0 +1,21 @@
+<div class="avatar">
+  <img src="{{ .Site.Params.avatar | absURL }}" alt="{{ .Site.Params.author }}">
+</div>
+<div class="author-name" rel="author">{{ .Site.Params.author }}</div>
+<div class="bio">
+  <p>{{ .Site.Params.bio }}</p>
+</div>
+{{ if isset .Site.Params "sns" }}
+  {{ $snsLen := len .Site.Params.sns }}
+  {{ if gt $snsLen 0 }}
+  <ul id="sns-links" class="sns-links">
+    {{ range $k,$v := .Site.Params.sns }}
+    <li>
+        <a href="{{ $v }}" target="_blank">
+            <i class="iconfont icon-{{ $k }}"></i>
+        </a>
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+{{ end }}

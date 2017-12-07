@@ -1,0 +1,13 @@
+<header class="g-header">
+  <div class="g-logo">
+    <a href="{{ .Site.BaseURL }}"></a>
+  </div>
+  <i id="menu-toggle" class="iconfont icon-menu"></i>
+  <nav class="g-nav">
+      <ul>
+          {{ range .Site.Menus.nav }}
+          <li><a href="{{ .URL }}">{{ .Name }}</a></li>
+          {{ end }}
+      </ul>
+  </nav>
+</header>
