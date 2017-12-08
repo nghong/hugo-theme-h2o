@@ -28,7 +28,7 @@
                     {{ if gt $tagsLen 0 -}}
                     <div class="post-tags">
                         {{ range $tag := (sort .Params.tags) -}}
-                        <a href="{{ "/tags/" | absURL }}/{{ . | urlize | lower }}" class="post-tag">{{ . }}</a>
+                        <a href="{{ "/tags/" | absURL }}/#{{ . | urlize | lower }}" class="post-tag">{{ . }}</a>
                         {{ end }}
                     </div>
                     {{ end }}

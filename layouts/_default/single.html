@@ -1,13 +1,13 @@
 {{ define "main" }}
 
-<header class="g-banner post-header bgcolor-default{{ if (not (isset .Params.cover)) }} post-no-cover{{ end }}" data-theme="bgcolor-default">
+<header class="g-banner post-header bgcolor-default{{ if (not (isset .Params "cover")) }} post-no-cover{{ end }}" data-theme="default">
     <div class="post-wrapper">
         {{ if isset .Params "tags" -}}
             {{ $tagsLen := len .Params.tags }}
             {{ if gt $tagsLen 0 -}}
             <div class="post-tags">
                 {{ range $tag := (sort .Params.tags) -}}
-                <a href="{{ "/tags/" | absURL }}/{{ . | urlize | lower }}" class="post-tag">{{ . }}</a>
+                <a href="{{ "/tags/" | absURL }}/#{{ . | urlize | lower }}" class="post-tag">{{ . }}</a>
                 {{ end }}
             </div>
             {{ end }}
@@ -27,7 +27,7 @@
     <article class="markdown-body">
         {{ .Content }}
     </article>
-    {{ if isset .Site.Params "socialShare" }}
+    {{ if isset .Site.Params "socialshare" }}
     <div class="social-share-wrapper">
         <div class="social-share"></div>
     </div>
@@ -44,7 +44,7 @@
             <a href="{{ .Permalink }}" class="read-next-link"></a>
             <section>
                 <span>{{ .Title }}</span>
-                <p>{{ .Summary }}</p>
+                <p>{{ .Summary | truncate 80 }}</p>
             </section>
             {{ if isset .Params "cover" }}
             <div class="filter"></div>
@@ -57,7 +57,7 @@
             <a href="{{ .Permalink }}" class="read-next-link"></a>
             <section>
                 <span>{{ .Title }}</span>
-                <p>{{ .Summary }}</p>
+                <p>{{ .Summary | truncate 80 }}</p>
             </section>
             {{ if isset .Params "cover" }}
             <div class="filter"></div>
@@ -75,19 +75,17 @@
 </section>
 
 <script src="{{ "/js/social-share.min.js" | absURL }}"></script>
-{{ if isset .Site.Params "socialShare" }}
+{{- if isset .Site.Params "socialshareitems" -}}
 <script>
     socialShare('.social-share', {
         sites: [
             {{- $list := .Site.Params.socialShareItems -}}
             {{- $len := (len $list) -}}
-            {{ range $index, $element := $list }}
+            {{- range $index, $element := $list -}}
             '{{ $element}}'{{ if ne (add $index 1) $len }},{{ end }}
-            {{ end }}
+            {{- end -}}
         ]});
 </script>
-{{ end }}
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<script src="{{ "/js/main.min.js" | absURL }}"></script>
-{{ with .Site.DisqusShortname }}{{ template "_internal/disqus.html" . }}{{ end }}
+{{- end -}}
+{{- with .Site.DisqusShortname -}}{{ template "_internal/disqus.html" . }}{{- end -}}
 {{ end }}

@@ -5,9 +5,9 @@
   <i id="menu-toggle" class="iconfont icon-menu"></i>
   <nav class="g-nav">
       <ul>
-          {{ range .Site.Menus.nav }}
+          {{- range .Site.Menus.main -}}
           <li><a href="{{ .URL }}">{{ .Name }}</a></li>
-          {{ end }}
+          {{- end -}}
       </ul>
   </nav>
 </header>

@@ -38,15 +38,15 @@ $(document).ready(function(){
 
             if(scrollTop > header_h) {
 
-                if(scrollTop > 3*header_h) {
+                /*if(scrollTop > 3*header_h) {
                     header.addClass('headerUp');
-                }
+                }*/
                 header.css({
                     'background-color': 'rgba(255, 255, 255, .98)',
                     'box-shadow': '0 1px 12px rgba(0, 0, 0, .08)'
                 });
                 appLogo.css({
-                    'background': 'url(/assets/icons/logo_' + themeColorFlag + '.svg) no-repeat center',
+                    'background': 'url(/icons/logo_' + themeColorFlag + '.svg) no-repeat center',
                     'background-size': '100% 100%'
                 });
                 navText.css('color', '#666');
@@ -54,13 +54,13 @@ $(document).ready(function(){
 
             }else{
 
-                header.removeClass('headerUp');
+                /*header.removeClass('headerUp');*/
                 header.css({
                     'background-color': 'transparent',
                     'box-shadow': 'none'
                 });
                 appLogo.css({
-                    'background': 'url(/assets/icons/logo.svg) no-repeat center',
+                    'background': 'url(/icons/logo.svg) no-repeat center',
                     'background-size': '100% 100%'
                 });
                 navText.css('color', '#fff');
@@ -70,9 +70,9 @@ $(document).ready(function(){
             // scroll action
             if(scFlag > scrollTop) {
                 header.addClass('headerDown');
-            }else{
+            }/*else{
                 header.removeClass('headerDown');
-            }
+            }*/
             scFlag = scrollTop;
         });
     }
@@ -188,7 +188,7 @@ $(document).ready(function(){
             $('.icon-search').css('color', '#CAD3DC');
         }
 
-        $.getJSON('../../search.json').done(function(data) {
+        $.getJSON('/index.json').done(function(data) {
             var html = '';
             for (var i in data) {
                 var item = data[i],
@@ -221,25 +221,6 @@ $(document).ready(function(){
     }
 
     new Search();
-
-    /**
-     * Night mode
-     */
-    function nightMode() {
-        var el = $('body'),
-            className = 'night-mode';
-
-        var date = new Date(),
-            hour = date.getHours();
-
-        if((hour >= 0 && hour <= 6) || hour === 23) {
-            el.addClass(className);
-        }
-    }
-    
-    if($('#nm-switch').val() === 'true') {
-        nightMode();
-    }
 
     /**
      * Copy and copyright

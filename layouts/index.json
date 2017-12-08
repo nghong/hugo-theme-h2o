@@ -1,0 +1,11 @@
+{{- $list := .Site.RegularPages -}}
+{{- $len := (len $list) -}}
+[
+  {{- range $index, $page := $list -}}
+    {
+      "title": "{{ $page.Title }}",
+      "tags": "{{if isset $page.Params "tags" }}{{ delimit $page.Params.tags " " }}{{ end }}",
+      "url": "{{ $page.Permalink }}"
+    }{{ if ne (add $index 1) $len }},{{ end }}
+  {{- end -}}
+]

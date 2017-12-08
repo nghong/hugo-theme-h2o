@@ -1,21 +1,16 @@
----
-title = "Tags"
----
-
 {{ define "main" }}
 
-{{ partialCached "header.html" . }}
-
 <div class="g-banner tags-banner bgcolor-default" data-theme="default">
-    <h2>TAGS</h2>
+    <h2>{{ .Title | upper }}</h2>
 </div>
 
 <main class="tags-content">
 
     <ul class="tags-list">
-        {{ range $key, $value := .Site.Taxonomies.tags }}
+        {{ $data := .Data }}
+        {{ range $key, $value := .Data.Terms.Alphabetical }}
         <li>
-            <span class="tag-name" id="{{ $value }}">「{{ $key }}」</span>
+            <span class="tag-name" id="{{ $value.Name }}">«{{ $value.Name }}»</span>
             {{ range $value.Pages }}
             <a class="tag-post" href="{{ .Permalink}}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
             {{ end }}
@@ -23,7 +18,5 @@ title = "Tags"
         {{ end }}
     </ul>
 </main>
-    
-{{ partialCached "footer.html" . }}
 
 {{ end }}

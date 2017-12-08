@@ -1,5 +1,4 @@
-{{ partialCached "header.html" . }}
-
+{{ define "main" }}
 <header class="g-banner np-banner" data-theme="default">
     <div class="post-wrapper">
         <h1>404</h1>
@@ -7,3 +6,4 @@
         <a href="{{ .Site.BaseURL }}" class="btn">Back to home</a>
     </div>
 </header>
+{{ end }}
