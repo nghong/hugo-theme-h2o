@@ -3,7 +3,7 @@
 
 <div class="g-banner home-banner banner-theme-default" data-theme="default">
     <h2>{{ .Site.Title }}</h2>
-    <h3>{{ .Site.Params.subtitle }}</h3>
+    <h3>{{ .Site.Params.description }}</h3>
 </div>
 
 <main class="g-container home-content">
@@ -13,8 +13,7 @@
             <article class="article-item">
                 {{ if isset .Params "cover" }}
                 <div class="post-cover">
-                    <a class="post-link" href="{{ .Permalink }}" title="{{ .Title }}"></a>
-                    <img src="{{ .Params.cover }}" alt="{{ .Title }}">
+                    <a class="post-link" href="{{ .Permalink }}" title="{{ .Title }}"></a><img src="{{ .Params.cover }}" alt="{{ .Title }}">
                 </div>
                 {{ end }}
                 <section class="post-preview">

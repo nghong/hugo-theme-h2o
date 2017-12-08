@@ -10,7 +10,7 @@
         {{ $data := .Data }}
         {{ range $key, $value := .Data.Terms.Alphabetical }}
         <li>
-            <span class="tag-name" id="{{ $value.Name }}">«{{ $value.Name }}»</span>
+            <span class="tag-name" id="{{ $value.Name | urlize | lower }}">«{{ $value.Name }}»</span>
             {{ range $value.Pages }}
             <a class="tag-post" href="{{ .Permalink}}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
             {{ end }}

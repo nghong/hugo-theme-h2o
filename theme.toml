@@ -1,21 +1,21 @@
 # theme.toml template for a Hugo theme
 # See https://github.com/gohugoio/hugoThemes#themetoml for an example
 
-name = "H2o"
+name = "H2O"
 license = "MIT"
 licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
 description = ""
 homepage = "http://example.com/"
-tags = []
-features = []
+tags = ["blog", "clean"]
+features = ["tags", "search", "responsive"]
 min_version = "0.31.1"
 
 [author]
-  name = ""
-  homepage = ""
+  name = "Hong Nguyen"
+  homepage = "https://giaphong.me/"
 
 # If porting an existing theme
 [original]
-  name = ""
-  homepage = ""
-  repo = ""
+  name = "H2O Theme"
+  homepage = "http://liaokeyu.com/"
+  repo = "https://github.com/kaeyleo/jekyll-theme-H2O"

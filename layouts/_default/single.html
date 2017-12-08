@@ -7,14 +7,14 @@
             {{ if gt $tagsLen 0 -}}
             <div class="post-tags">
                 {{ range $tag := (sort .Params.tags) -}}
-                <a href="{{ "/tags/" | absURL }}/#{{ . | urlize | lower }}" class="post-tag">{{ . }}</a>
+                <a href="{{ "/tags/" | absURL }}#{{ . | urlize | lower }}" class="post-tag">{{ . }}</a>
                 {{ end }}
             </div>
             {{ end }}
         {{ end }}
         <h1>{{ .Title }}</h1>
         <div class="post-meta">
-            {{ partial "post-meta.html" (dict "date" .Date "readingTime" .ReadingTime) }}
+            {{ partial "post-meta.html" (dict "date" .Date "reading_time" .ReadingTime) }}
         </div>
     </div>
     {{ if isset .Params "cover" }}
