@@ -226,7 +226,7 @@ $(document).ready(function(){
      * Copy and copyright
      */
     function setClipboardData(str) {
-        str += '\n\nIf you want to use this content for your website, please include credit to: ' + location.href;
+        str += '\n\nIf you want to use this content, please include the credit to: ' + location.href;
         $('.post-content').on('copy', function(e) {
             var data = window.clipboardData || e.originalEvent.clipboardData;
             data.setData('text/plain', str);

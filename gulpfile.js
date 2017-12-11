@@ -1,10 +1,10 @@
-var gulp = require('gulp'),
-uglify = require('gulp-uglify'),
-sass = require('gulp-sass'),
-cleanCSS = require('gulp-clean-css'),
-rename = require('gulp-rename');
-concat = require('gulp-concat');
-merge = require('merge-stream');
+var gulp = require('gulp');
+var uglify = require('gulp-uglify');
+var sass = require('gulp-sass');
+var cleanCSS = require('gulp-clean-css');
+var rename = require('gulp-rename');
+var concat = require('gulp-concat');
+var merge = require('merge-stream');
 
 gulp.task('scripts', function(){
 gulp.src([
