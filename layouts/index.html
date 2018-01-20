@@ -8,18 +8,22 @@
 
 <main class="g-container home-content">
     <div class="article-list">
-        {{ $paginator := .Paginate (where .Data.Pages "Type" "post") (index .Site.Params "paginate" | default 10) }}
-        {{ range $paginator.Pages -}}
+        {{- $paginator := .Paginate (where .Data.Pages "Type" "post") (index .Site.Params "paginate" | default 10) -}}
+        {{- range $paginator.Pages -}}
             <article class="article-item">
-                {{ if isset .Params "cover" }}
+                {{- if isset .Params "cover" -}}
                 <div class="post-cover">
                     <a class="post-link" href="{{ .Permalink }}" title="{{ .Title }}"></a><img src="{{ .Params.cover }}" alt="{{ .Title }}">
                 </div>
-                {{ end }}
+                {{- end -}}
                 <section class="post-preview">
                     <a class="post-link" href="{{ .Permalink }}" title="{{ .Title }}"></a>
                     <h2 class="post-title">{{ .Title }}</h2>
+                    {{- if isset .Params "description" -}}
+                    <p class="post-excerpt">{{ .Params.description | plainify | htmlUnescape }}</p>
+                    {{- else -}}
                     <p class="post-excerpt">{{ .Summary | plainify | htmlUnescape }}</p>
+                    {{- end -}}
                 </section>
                 <footer class="post-meta">
                 {{ if isset .Params "tags" -}}

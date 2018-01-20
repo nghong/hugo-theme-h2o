@@ -3,33 +3,72 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ .Title }}{{ if not .IsHome }} | {{ .Site.Title }}{{ end }}</title>
   {{ with .Site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
-  {{ with .Description }}<meta name="description" content="{{ . | plainify}}">{{ end }}
-  {{ with .Keywords -}}<meta name="keywords" content="{{ delimit . ", " }}">{{- end }}
-  {{ .Hugo.Generator }}
+  {{ if isset .Params "description" -}}
+  <meta name="description" content="{{ .Params.description | plainify | htmlUnescape }}">
+  {{- else if not .IsHome -}}
+  <meta name="description" content="{{ .Summary | plainify | htmlUnescape }}">
+  {{- else -}}
+  <meta name="description" content="{{ .Site.Params.description | plainify | htmlUnescape }}">
+  {{- end }}
+  {{ .Hugo.Generator -}}
+  <!-- Google / Search Engine Tags -->
+  <meta itemprop="name" content="{{ .Title }}{{ if not .IsHome }} | {{ .Site.Title }}{{ end }}">
+  {{ if isset .Params "description" -}}
+  <meta itemprop="description" content="{{ .Params.description | plainify | htmlUnescape }}">
+  {{- else if not .IsHome -}}
+  <meta itemprop="description" content="{{ .Summary | plainify | htmlUnescape }}">
+  {{- else -}}
+  <meta itemprop="description" content="{{ .Site.Params.description | plainify | htmlUnescape }}">
+  {{- end }}
+  {{ if isset .Params "cover" -}}
+  <meta itemprop="image" content="{{ .Params.cover | absURL }}">
+  {{- else -}}
+  <meta itemprop="image" content="{{ "/img/default-cover.jpg" | absURL }}">
+  {{- end }}
   <!-- Open Graph -->
   <meta property="og:title" content="{{ .Title }}{{ if not .IsHome }} | {{ .Site.Title }}{{ end }}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{ .Permalink }}">
-  <meta property="og:description" content="{{ . }}">
+  {{ if isset .Params "description" -}}
+  <meta property="og:description" content="{{ .Params.description | plainify | htmlUnescape }}">
+  {{- else if not .IsHome -}}
+  <meta property="og:description" content="{{ .Summary | plainify | htmlUnescape }}">
+  {{- else -}}
+  <meta property="og:description" content="{{ .Site.Params.description | plainify | htmlUnescape }}">
+  {{- end }}
   <meta property="og:site_name" content="{{ .Site.Title }}">
-  {{ with .Params.featuredimage -}}<meta property="og:image" content="{{ . | absURL }}">{{- end }}
+  {{ if isset .Params "cover" -}}
+  <meta property="og:image" content="{{ .Params.cover | absURL }}">
+  {{- else -}}
+  <meta property="og:image" content="{{ "/img/default-cover.jpg" | absURL }}">
+  {{- end }}
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:url" content="{{ .Permalink }}">
-  <meta name="twitter:title" content="{{ .Title }}">
-  <meta name="twitter:description" content="{{ .Description }}">
-  {{ with .Params.featuredimage -}}<meta name="twitter:image" content="{{ . | absURL }}">{{- end }}
-  
-  <link rel="canonical" href="{{ .Permalink }}" />
-  <link rel="stylesheet" href="{{ "/css/main.min.css" | relURL }}">
-  <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-  <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
-
+  <meta name="twitter:title" content="{{ .Title }}{{ if not .IsHome }} | {{ .Site.Title }}{{ end }}">
+  {{ if isset .Params "description" -}}
+  <meta name="twitter:description" content="{{ .Params.description | plainify | htmlUnescape }}">
+  {{- else if not .IsHome -}}
+  <meta name="twitter:description" content="{{ .Summary | plainify | htmlUnescape }}">
+  {{- else -}}
+  <meta name="twitter:description" content="{{ .Site.Params.description | plainify | htmlUnescape }}">
+  {{- end }}
+  {{ if isset .Params "cover" -}}
+  <meta name="twitter:image" content="{{ .Params.cover | absURL }}">
+  {{- else -}}
+  <meta name="twitter:image" content="{{ "/img/default-cover.jpg" | absURL }}">
+  {{- end }}
   <!-- Favicon and Touch icons -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="{{ .Site.Title }}" />
   <link rel="icon" href="{{ "/favicon.ico" | relURL }}" />
-  <link rel="icon" sizes="192x192" href="{{ "/android-chrome-192x192.png" | relURL }}" />
+  <link rel="icon" sizes="192x192" href="{{ "/android-chrome-192x192.png" | absURL }}" />
   <link rel="apple-touch-icon" href="{{ "/apple-touch-icon.png" | relURL }}" />
   <link rel="mask-icon" href="{{ "/safari-pinned-tab.svg" | relURL }}" color="#5fbf5e" />
+  <!-- CSS and others -->
+  <link rel="canonical" href="{{ .Permalink }}" />
+  <link rel="stylesheet" href="{{ "/css/main.min.css" | relURL }}">
+  <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
+  <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
 </head>
