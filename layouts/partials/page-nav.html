@@ -1,14 +1,14 @@
 <nav class="pagination">
   <input type="hidden" id="total_pages" value="{{ .Paginator.TotalPages }}">
   <input type="hidden" id="current_pages" value="{{ .Paginator.PageNumber }}">
-  <input type="hidden" id="base_url" value="{{ "/" | absURL }}">
+  <input type="hidden" id="base_url" value="{{ "/" | relURL }}">
   <div class="page-links">
       {{ if .Paginator.HasPrev }}
         <a href="{{ .Paginator.Prev.URL }}" class="page-link" title="Previous Page">&laquo;</a>
       {{ end }}
       <div id="page-link-container"></div>
       {{ if .Paginator.HasNext }}
-      <a href=".Paginator.Next.URL" class="page-link">&raquo;</a>
+      <a href="{{ .Paginator.Next.URL }}" class="page-link">&raquo;</a>
       {{ end }}
   </div>
 </nav>
