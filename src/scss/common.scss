@@ -47,10 +47,10 @@
             background-color: rgba(255, 255, 255, .2);
         }
     }
-    
+
     .g-nav {
         float: right;
-        margin-right: 2%; 
+        margin-right: 2%;
         &>ul>li{
             float: left;
             height: $g-header-h;
@@ -285,12 +285,12 @@
     ::-webkit-input-placeholder {
         color: #9EA8B3;
     }
-    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */ 
-        color: #9EA8B3; 
-    } 
-    ::-moz-placeholder { /* Mozilla Firefox 19+ */ 
-        color: #9EA8B3; 
-    } 
+    :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+        color: #9EA8B3;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color: #9EA8B3;
+    }
     .icon-search {
         position: absolute;
         top: 8px;
@@ -393,7 +393,7 @@
             &:hover {
                 color: #83888F;
             }
-            
+
         }
     }
 }
@@ -402,7 +402,7 @@
     margin: 0 auto;
 }
 .post-wrapper {
-    width: $post-content-w;  
+    width: $post-content-w;
 }
 
 .post-header {
@@ -461,7 +461,7 @@
         width: 100%;
         height: 100%;
         background-color: #000;
-        opacity: .8;
+        opacity: .7;
         z-index: -1;
     }
 
@@ -535,7 +535,7 @@
             background-color: #EAECEE;
         }
         &:before {
-            top: 0;    
+            top: 0;
         }
         &:after {
             bottom: 0;
@@ -648,7 +648,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, .22);
+        background-color: rgba(0, 0, 0, .40);
         z-index: 1;
         transition: .3s linear;
     }
@@ -658,7 +658,8 @@
         top: 0;
         left: 0;
         width: 100%;
-        -webkit-filter: blur(6px);
+        -webkit-filter: blur(7px); /* Safari 6.0 - 9.0 */
+        filter: blur(7px);
         z-index: 0;
     }
 }
@@ -706,7 +707,7 @@
             }
         }
     }
-    
+
 }
 
 // 404 page
@@ -740,148 +741,4 @@
         opacity: .8;
     }
 
-}
-
-// 夜间模式
-.night-mode {
-    background-color: $color-dark-primary;
-
-    .g-banner {
-        background-color: $color-dark-primary;
-        color: #C8CDD3;
-        .header-img {
-            -webkit-filter:brightness(.5);
-        }
-    }
-
-    .post-header {
-        .filter {
-            opacity: .6;
-        }
-    }
-
-    .article-item, .g-sidebar, .page-links, .search-card input, .search_result, 
-    .search_item, .article-item .post-tag, .tags-card .tag, .tags-list li, 
-    .tags-list .tag {
-        color: $color-f-dark;
-        background-color: $color-dark-secondary;
-        border-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .article-item {
-        .post-cover img {
-             -webkit-filter: brightness(.6);
-        }
-        .post-preview {
-            .post-title, .post-subtitle, .post-excerpt {
-                color: $color-f-dark;
-            }
-        }
-        .post-meta {
-            .post-tags, .post-date {
-                color: $color-f-dark;
-            }
-        }
-    }
-
-    .pagination {
-        .page-link{
-            &:hover {
-                background-color: rgba(255, 255, 255, .1);
-            }
-        }
-        .active {
-            background-color: rgba(255, 255, 255, .1);
-        }
-    }
-
-    .g-sidebar {
-        section {
-            border-bottom: 1px solid rgba(255, 255, 255, .1);
-            &:last-child {
-                border-bottom: none;
-            }
-        }
-    }
-    .avatar img {
-        -webkit-filter: brightness(.6);
-    }
-    .author-name, .bio {
-        color: $color-f-dark;
-    }
-    .search_result {
-        .search_item {
-            &:last-child {
-                border-color: rgba(255, 255, 255, 0.1);
-            }
-            &:hover {
-                background-color: transparent;
-                color: #fff;
-            }
-        }
-    }
-    .article-item .post-tag, .tags-card .tag {
-        border: none;
-    }
-    .tags-list {
-        li {
-            .tag-name, .tag-post {
-                color: $color-f-dark;
-            }
-        }
-    }
-    .g-footer {
-        border-color: rgba(255, 255, 255, 0.1);
-        section {
-            color: $color-f-dark;
-        }
-    }
-    .post-content {
-        background-color: $color-dark-primary;
-        .post-subtitle {
-            &:before, &:after {
-                background-color: #575B63;
-            }
-        }
-    }
-    
-    .markdown-body {
-        color: $color-f-dark;
-        img {
-            -webkit-filter: brightness(.6);
-        }
-        blockquote {
-            border-left-color: #555A61;
-        }
-    }
-    .read-next-item {
-        background-color: #484D59;
-        section {
-            color: #AEB4BD;
-        }
-        .filter {
-            background-color: rgba(0, 0, 0, .6);
-        }
-    }
-    :not(pre) > code[class*="language-"], pre[class*="language-"] {
-        background-color: $color-dark-secondary;
-    }
-    code[class*="language-"], pre[class*="language-"], .token.punctuation, 
-    .token.operator, .token.entity, .token.url, .language-css .token.string, 
-    .style .token.string, .token.variable {
-        color: #8F97A7;
-    }
-    .token.atrule, .token.attr-value, .token.function {
-        color: #A9A054;
-    }
-    .token.selector, .token.attr-name, .token.string, .token.char, 
-    .token.builtin, .token.inserted {
-        color: #84AC35;
-    }
-    .token.property, .token.tag, .token.constant, .token.symbol, .token.deleted {
-        color: #D75885;
-    }
-    .token.keyword {
-        color: #61BDCF;
-    }
 }

@@ -19,7 +19,7 @@
     </div>
     {{ if isset .Params "cover" }}
     <div class="filter"></div>
-    <div class="post-cover" style="background: url('{{ .Params.cover }}') center no-repeat; background-size: cover;">
+    <div class="post-cover" style="background: url('{{ .Params.cover }}') center no-repeat; background-size: cover; -webkit-filter: blur(7px); filter: blur(7px);"></div>
     {{ end }}
 </header>
 
