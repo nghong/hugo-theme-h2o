@@ -28,7 +28,7 @@ $(document).ready(function(){
         var appLogo = $('.g-logo');
         var navText = $('.g-nav a');
 
-        var themeColorFlag = $('.g-banner').attr('data-theme');
+        var themeColorFlag = $('.g-banner').attr('data-theme') || 'default';
 
         var scFlag = $(document).scrollTop();
 
@@ -38,41 +38,41 @@ $(document).ready(function(){
 
             if(scrollTop > header_h) {
 
-                /*if(scrollTop > 3*header_h) {
+                if(scrollTop > 3*header_h) {
                     header.addClass('headerUp');
-                }*/
+                }
                 header.css({
-                    'background-color': 'rgba(255, 255, 255, .98)',
+                    'background-color': 'rgba(255, 255, 255, .72)',
                     'box-shadow': '0 1px 12px rgba(0, 0, 0, .08)'
                 });
                 appLogo.css({
                     'background': 'url(/icons/logo_' + themeColorFlag + '.svg) no-repeat center',
                     'background-size': '100% 100%'
                 });
-                navText.css('color', '#666');
+                navText.css('color', '#656565');
                 $('.g-nav').addClass('nav-' + themeColorFlag);
 
             }else{
 
-                /*header.removeClass('headerUp');*/
+                header.removeClass('headerUp');
                 header.css({
-                    'background-color': 'transparent',
-                    'box-shadow': 'none'
+                    'background-color': 'rgba(255, 255, 255, .72)',
+                    'box-shadow': '0 1px 12px rgba(0, 0, 0, .08)'
                 });
                 appLogo.css({
-                    'background': 'url(/icons/logo.svg) no-repeat center',
+                    'background': 'url(/icons/logo_' + themeColorFlag + '.svg) no-repeat center',
                     'background-size': '100% 100%'
                 });
-                navText.css('color', '#fff');
+                navText.css('color', '#656565');
                 $('.g-nav').removeClass('nav-' + themeColorFlag);
 
             }
             // scroll action
             if(scFlag > scrollTop) {
                 header.addClass('headerDown');
-            }/*else{
+            }else{
                 header.removeClass('headerDown');
-            }*/
+            }
             scFlag = scrollTop;
         });
     }

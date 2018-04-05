@@ -11,7 +11,8 @@
     width: 100%;
     height: $g-header-h;
     padding: 16px 0;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, .80);
+    box-shadow: 0 1px 12px rgba(0, 0, 0, .08);
     transition: all .6s;
     z-index: 1000;
     .g-logo {
@@ -19,7 +20,7 @@
         margin-left: 2%;
         width: 100px;
         height: $g-header-h;
-        background: url('/icons/logo.svg') no-repeat center;
+        background: url('/icons/logo_default.svg') no-repeat center;
         background-size: 100% 100%;
         opacity: 0.9;
         transition: all .2s;
@@ -40,7 +41,7 @@
         right: 0;
         padding: 8px;
         font-size: 28px;
-        color: #fff;
+        color: $color-dark-primary;
         opacity: .8;
         border-radius: 3px;
         &:active {
@@ -61,14 +62,16 @@
                 margin-right: 0;
             }
             &>a {
+                font-weight: 600;
                 display: inline-block;
                 font-size: 14px;
                 letter-spacing: 1px;
-                color: #fff;
+                color: $color-f-secondary;
                 padding: 0 12px;
                 opacity: .7;
                 &:hover {
                     opacity: 1;
+                    color: $color-dark-primary !important;
                 }
             }
         }
@@ -76,12 +79,12 @@
 
     .nav-default {
         a:hover {
-            color: $color-theme-default !important;
+            color: $color-f-primary !important;
         }
     }
     .nav-pink {
         a:hover {
-            color: $color-theme-pink !important;
+            color: $color-f-primary !important;
         }
     }
 }
@@ -100,62 +103,19 @@
     padding: 0 60px;
 }
 
-.home-banner {
-    position: relative;
-    text-align: center;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 38, 55, .16);
-    h2, h3{
-        position: relative;
-        z-index: 1;
-        text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
-    }
-    h2 {
-        padding-top: 190px;
-        line-height: 38px;
-        font-size: 42px;
-        font-weight: bold;
-        letter-spacing: 2px;
-        line-height: 52px;
-    }
-    h3 {
-        font-size: 20px;
-        font-weight: normal;
-        //letter-spacing: 10px;
-        margin-top: 8px;
-    }
-    .header-img {
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 101%;
-        z-index: 0;
-    }
-}
-
 .banner-theme-default {
     background: -webkit-linear-gradient(0deg, #3CD5FF, #007AFF);
     background: -o-linear-gradient(0deg, #3CD5FF, #007AFF);
     background: -moz-linear-gradient(0deg, #3CD5FF, #007AFF);
     background: linear-gradient(100deg, #3CD5FF, #007AFF);
 }
-.banner-theme-pink {
-    background: -webkit-linear-gradient(0deg, #FFCE69, #FA709A);
-    background: -o-linear-gradient(0deg, #FFCE69, #FA709A);
-    background: -moz-linear-gradient(0deg, #FFCE69, #FA709A);
-    background: linear-gradient(100deg, #FFCE69, #FA709A);
-}
 
 .themeColor-default {
     background-color: $color-theme-default;
 }
-.themeColor-pink {
-    background-color: $color-theme-pink;
-}
 
 .home-content {
-    margin: 40px auto 60px;
+    margin: 80px auto 60px;
     @include clearfix;
 }
 
