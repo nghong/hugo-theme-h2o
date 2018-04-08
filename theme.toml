@@ -4,7 +4,7 @@
 name = "H2O"
 license = "MIT"
 licenselink = "https://github.com/yourname/yourtheme/blob/master/LICENSE.md"
-description = ""
+description = "A porting and heavy-editing from H2O theme of Liao Keyu"
 homepage = "http://example.com/"
 tags = ["blog", "clean"]
 features = ["tags", "search", "responsive"]
