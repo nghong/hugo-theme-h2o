@@ -532,6 +532,19 @@
     img {
         transition: .3s;
     }
+    figure {
+        margin: 32px auto;
+        img {
+            margin: 0px auto;
+        }
+        figcaption {
+            margin-top: 8px;
+            p {
+                text-align: center;
+                font-style: italic;
+            }
+        }
+    }
     ul, ol {
         li {
             p {
