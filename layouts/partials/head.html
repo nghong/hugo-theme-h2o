@@ -11,55 +11,6 @@
   <meta name="description" content="{{ .Site.Params.description | plainify | htmlUnescape }}">
   {{- end }}
   {{ .Hugo.Generator -}}
-  <!-- Google / Search Engine Tags -->
-  <meta itemprop="name" content="{{ .Title }}{{ if not .IsHome }} | {{ .Site.Title }}{{ end }}">
-  {{ if isset .Params "description" -}}
-  <meta itemprop="description" content="{{ .Params.description | plainify | htmlUnescape }}">
-  {{- else if not .IsHome -}}
-  <meta itemprop="description" content="{{ .Summary | plainify | htmlUnescape }}">
-  {{- else -}}
-  <meta itemprop="description" content="{{ .Site.Params.description | plainify | htmlUnescape }}">
-  {{- end }}
-  {{ if isset .Params "cover" -}}
-  <meta itemprop="image" content="{{ .Params.cover | absURL }}">
-  {{- else -}}
-  <meta itemprop="image" content="{{ "/img/default-cover.jpg" | absURL }}">
-  {{- end }}
-  <!-- Open Graph -->
-  <meta property="og:title" content="{{ .Title }}{{ if not .IsHome }} | {{ .Site.Title }}{{ end }}">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="{{ .Permalink }}">
-  {{ if isset .Params "description" -}}
-  <meta property="og:description" content="{{ .Params.description | plainify | htmlUnescape }}">
-  {{- else if not .IsHome -}}
-  <meta property="og:description" content="{{ .Summary | plainify | htmlUnescape }}">
-  {{- else -}}
-  <meta property="og:description" content="{{ .Site.Params.description | plainify | htmlUnescape }}">
-  {{- end }}
-  <meta property="og:site_name" content="{{ .Site.Title }}">
-  {{ if isset .Params "cover" -}}
-  <meta property="og:image" content="{{ .Params.cover | absURL }}">
-  {{- else -}}
-  <meta property="og:image" content="{{ "/img/default-cover.jpg" | absURL }}">
-  {{- end }}
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:url" content="{{ .Permalink }}">
-  <meta name="twitter:title" content="{{ .Title }}{{ if not .IsHome }} | {{ .Site.Title }}{{ end }}">
-  {{ if isset .Params "description" -}}
-  <meta name="twitter:description" content="{{ .Params.description | plainify | htmlUnescape }}">
-  {{- else if not .IsHome -}}
-  <meta name="twitter:description" content="{{ .Summary | plainify | htmlUnescape }}">
-  {{- else -}}
-  <meta name="twitter:description" content="{{ .Site.Params.description | plainify | htmlUnescape }}">
-  {{- end }}
-  {{ if isset .Params "cover" -}}
-  <meta name="twitter:image" content="{{ .Params.cover | absURL }}">
-  {{- else -}}
-  <meta name="twitter:image" content="{{ "/img/default-cover.jpg" | absURL }}">
-  {{- end }}
-  <!-- Google Analytics -->
-  {{ template "_internal/google_analytics_async.html" . }}
   <!-- Favicon and Touch icons -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />

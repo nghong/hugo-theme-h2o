@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-<header class="g-banner post-header bgcolor-default{{ if (not (isset .Params "cover")) }} post-no-cover{{ end }}" data-theme="default">
+<header class="g-banner post-header post-no-cover" data-theme="default">
     <div class="post-wrapper">
         {{ if isset .Params "tags" -}}
             {{ $tagsLen := len .Params.tags }}
@@ -17,73 +17,32 @@
             {{ partial "post-meta.html" (dict "date" .Date "reading_time" .ReadingTime) }}
         </div>
     </div>
-    {{ if isset .Params "cover" }}
-    <div class="filter"></div>
-    <div class="post-cover" style="background-image: url('{{ .Params.cover }}'"></div>
-    {{ end }}
 </header>
 
 <div class="post-content">
     <article class="markdown-body">
         {{ .Content }}
     </article>
-    {{ if isset .Site.Params "socialshare" }}
-    <div class="social-share-wrapper">
-        <div class="social-share"></div>
-    </div>
-    {{ end }}
 </div>
 
-<section class="author-detail">
-    <section class="post-footer-item author-card">
-        {{ partialCached "author.html" . }}
-    </section>
-    <section class="post-footer-item read-next">
-        {{ with .Next }}
-        <div class="read-next-item">
-            <a href="{{ .Permalink }}" class="read-next-link"></a>
-            <section>
-                <span>{{ .Title }}</span>
-                <p>{{ .Summary | truncate 80 }}</p>
-            </section>
-            {{ if isset .Params "cover" }}
-            <div class="filter"></div>
-            <img src="{{ .Params.cover }}" alt="{{ .Title }}">
-            {{ end }}
-        </div>
-        {{ end }}
-        {{ with .Prev }}
-        <div class="read-next-item">
-            <a href="{{ .Permalink }}" class="read-next-link"></a>
-            <section>
-                <span>{{ .Title }}</span>
-                <p>{{ .Summary | truncate 80 }}</p>
-            </section>
-            {{ if isset .Params "cover" }}
-            <div class="filter"></div>
-            <img src="{{ .Params.cover }}" alt="{{ .Title }}">
-            {{ end }}
-        </div>
-        {{ end }}
-    </section>
-    {{ with .Site.DisqusShortname }}
-    <section class="post-footer-item comment">
-        {{ partialCached "disqus.html" . }}
-    </section>
+<section class="post-footer-item read-next">
+    {{ with .Next }}
+    <div class="read-next-item">
+        <a href="{{ .Permalink }}" class="read-next-link"></a>
+        <section>
+            <span>{{ .Title }}</span>
+            <p>{{ .Summary | truncate 80 }}</p>
+        </section>
+    </div>
+    {{ end }}
+    {{ with .Prev }}
+    <div class="read-next-item">
+        <a href="{{ .Permalink }}" class="read-next-link"></a>
+        <section>
+            <span>{{ .Title }}</span>
+            <p>{{ .Summary | truncate 80 }}</p>
+        </section>
+    </div>
     {{ end }}
 </section>
-
-<script src="{{ "/js/social-share.min.js" | relURL }}"></script>
-{{- if isset .Site.Params "socialshareitems" -}}
-<script>
-    socialShare('.social-share', {
-        sites: [
-            {{- $list := .Site.Params.socialShareItems -}}
-            {{- $len := (len $list) -}}
-            {{- range $index, $element := $list -}}
-            '{{ $element}}'{{ if ne (add $index 1) $len }},{{ end }}
-            {{- end -}}
-        ]});
-</script>
-{{- end -}}
 {{ end }}

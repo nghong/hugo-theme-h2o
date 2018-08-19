@@ -5,11 +5,6 @@
         {{- $paginator := .Paginate (where .Data.Pages "Type" "post") (index .Site.Params "paginate" | default 10) -}}
         {{- range $paginator.Pages -}}
             <article class="article-item">
-                {{- if isset .Params "cover" -}}
-                <div class="post-cover">
-                    <a class="post-link" href="{{ .Permalink }}" title="{{ .Title }}"></a><img src="{{ .Params.cover }}" alt="{{ .Title }}">
-                </div>
-                {{- end -}}
                 <section class="post-preview">
                     <a class="post-link" href="{{ .Permalink }}" title="{{ .Title }}"></a>
                     <h2 class="post-title">{{ .Title }}</h2>
@@ -52,7 +47,7 @@
 
         {{ with .Site.Params.siteSearch }}
         <div class="search-card">
-            <input id="search_input" type="text" placeholder="Search...">
+            <input id="search_input" type="text" placeholder="Enter title to search">
             <i class="iconfont icon-search"></i>
             <div class="search_result"></div>
         </div>
