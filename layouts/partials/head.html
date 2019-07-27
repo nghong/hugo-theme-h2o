@@ -10,7 +10,12 @@
   {{- else -}}
   <meta name="description" content="{{ .Site.Params.description | plainify | htmlUnescape }}">
   {{- end }}
-  {{ .Hugo.Generator -}}
+  {{ hugo.Generator -}}
+  {{ if eq (getenv "HUGO_ENV") "production" | or (eq .Site.Params.env "production")  }}
+  <meta name="robots" content="index, follow">
+  {{ else }}
+  <meta name="robots" content="noindex, nofollow">
+  {{ end }}
   <!-- Favicon and Touch icons -->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -22,6 +27,7 @@
   <!-- CSS and others -->
   <link rel="canonical" href="{{ .Permalink }}" />
   <link rel="stylesheet" href="{{ "/css/main.min.css" | relURL }}">
-  <link href="{{ .RSSLink }}" rel="alternate" type="application/rss+xml" title="{{ .Site.Title }}" />
-  <link href="{{ .RSSLink }}" rel="feed" type="application/rss+xml" title="{{ .Site.Title }}" />
+  {{ range .AlternativeOutputFormats -}}
+  <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+  {{ end -}}
 </head>
