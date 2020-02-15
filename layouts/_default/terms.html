@@ -17,7 +17,7 @@
         <li>
             <span class="tag-name" id="{{ $value.Name | urlize | lower }}">«{{ $value.Name }}»</span>
             {{ range $value.Pages }}
-            <a class="tag-post" href="{{ .Permalink}}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
+            <a class="tag-post" href="{{ .Permalink }}" title="{{ .LinkTitle }}">{{ .LinkTitle }}</a>
             {{ end }}
         </li>
         {{ end }}
