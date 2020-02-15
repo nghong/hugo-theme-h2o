@@ -8,6 +8,11 @@
 
     <ul class="tags-list">
         {{ $data := .Data }}
+        <li>
+        {{ range $key, $value := .Data.Terms.Alphabetical }}
+        <a href="#{{ $value.Name | urlize | lower }}" class="tag">{{ $value.Name | urlize | lower }}</a>
+        {{ end }}
+        </li>
         {{ range $key, $value := .Data.Terms.Alphabetical }}
         <li>
             <span class="tag-name" id="{{ $value.Name | urlize | lower }}">«{{ $value.Name }}»</span>
